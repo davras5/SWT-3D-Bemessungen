@@ -2,9 +2,13 @@
 
 ## Overview
 
-This toolset processes Swisstopo 3D building data (multipatch geometries) to calculate building volumes and analyze surface areas. It's designed to handle large datasets efficiently using parallel processing, providing detailed metrics for each building including volume, roof area, footprint, and wall areas.
+This toolset processes [Swisstopo 3D building data](https://www.swisstopo.admin.ch/en/landscape-model-swissbuildings3d-3-0-beta) (multipatch geometries) to calculate building volumes and analyze surface areas. It's designed to handle large datasets efficiently using parallel processing, providing detailed metrics for each building including volume, roof area, footprint, and wall areas.
 
-## What It Does
+## Result
+The full processed dataset as a CSV file (1.2 GB) is available at:
+- [Download from Google Drive](https://drive.google.com/file/d/1AS-dI3VbV52xkmuAYBvPIzVNZnVGNWXG/view?usp=sharing)
+
+## What the Toolset Does
 
 1. **Reads** Swisstopo 3D building data from GDB (geodatabase) files
 2. **Repairs** mesh geometries to ensure they are watertight for accurate volume calculation
@@ -53,20 +57,15 @@ python main.py <input_gdb_path> <output_directory> [options]
 
 ### Example Usage
 
-1. **Test run with 100 buildings:**
+1. **Test run 100 buildings with 8 workers:**
    ```bash
    cd "C:\DEV\Python\SWT 3D Buildings"
-   python main.py "C:\Users\DavidRasner\Downloads\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Python\SWT 3D Buildings\output" --limit 100 --workers 8 --layer Building_solid
+   python main.py "C:\Users\DavidRasner\Downloads\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Python\SWT 3D Buildings\output" --layer Building_solid --workers 8 --limit 100
    ```
 
-2. **Process entire dataset:**
+2. **Process entire dataset with 8 workers:**
    ```bash
-   python main.py "C:\DEV\Inputs\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Output" --layer Building_solid
-   ```
-
-3. **Process with 4 workers:**
-   ```bash
-   python main.py "path\to\buildings.gdb" "output\folder" --workers 4
+   python main.py "C:\DEV\Inputs\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Output" --layer Building_solid --workers 8
    ```
 
 ## Output Files
@@ -143,10 +142,11 @@ python main.py <input_gdb_path> <output_directory> [options]
 ## Processing Time Estimates
 
 - 100 buildings: ~10-30 seconds
-- 10,000 buildings: ~10-20 minutes
+- 10,000 buildings: ~5-10 minutes
 - 100,000 buildings: ~1-2 hours
-- 1,700,000 buildings: ~10-20 hours (depending on CPU and workers)
-- 2,500,000 buildings: ~15-30 hours (depending on CPU and workers)
+- 1,700,000 buildings: ~2-4 hours (depending on CPU and workers)
+- 2,500,000 buildings: ~6-8 hours (depending on CPU and workers)
+
 
 ## Notes
 
