@@ -60,7 +60,7 @@ python main.py <input_gdb_path> <output_directory> [options]
 1. **Test run 100 buildings with 8 workers:**
    ```bash
    cd "C:\DEV\Python\SWT 3D Buildings"
-   python main.py "C:\Users\DavidRasner\Downloads\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Python\SWT 3D Buildings\output" --layer Building_solid --workers 8 --limit 100
+   python main.py "C:\DEV\Inputs\SWISSBUILDINGS3D_3_0.gdb" "C:\DEV\Python\SWT 3D Buildings\output" --layer Building_solid --workers 8 --limit 100
    ```
 
 2. **Process entire dataset with 8 workers:**
